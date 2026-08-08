@@ -8,7 +8,7 @@ curl -sL -o dev.json   https://raw.githubusercontent.com/xinyadu/nqg/master/data
 curl -sL -o test.json  https://raw.githubusercontent.com/xinyadu/nqg/master/data/raw/test.json
 cd ../..
 
-**STEP 2: install dependencies**
+**STEP 2: Install dependencies**
 pip install torch numpy sacrebleu rouge-score nltk
 
 **STEP 3: Preprocess**
@@ -16,8 +16,13 @@ cd src
 python preprocess.py --raw_dir ../data/raw --out_dir ../data/processed
 
 **STEP 4: Train the LSTM**
+For a small reference run:
 python train.py --max_train 5000 --max_val 500 --epochs 8 \
     --batch_size 128 --emb_dim 112 --hidden_dim 160 --lr 0.001 --tf_ratio 0.6 --seed 13
+
+For a full-scale run:
+python train.py --max_train -1 --max_val -1 --epochs 15 \
+        --emb_dim 300 --hidden_dim 512 --batch_size 64
 
 **STEP 5: Decode LSTM predictions on the test set**
 python generate.py --split test --n_examples 500 --decode greedy --out ../results/lstm_predictions.jsonl
@@ -34,14 +39,14 @@ python evaluate.py --pred ../results/lstm_predictions.jsonl --name lstm
 
 **Input representation:** Passage tokens with the answer span wrapped in < ans > ... < ans > markers, truncated to a ±25-token window around the answer
 
-**Parameters:**   6,484,560
+**Parameters:**   6,484,560 for small reference run, 25,356,912 for full-scale run
 
 **Hardware:**	1 CPU core, 1 GPU
 
 **Train / val example:s**	5,000 / 500 (subsampled from the full 75,711/10,570 with --max_train/--max_val)
 
-**Epochs:**	8
+**Epochs:**	8 for small reference run, 15 for full-scale run
 
-**Total training time:**	1,199 s (~20 min)
+**Total training time:**	1,199 s (~20 min) for small reference run, x for full-scale run
 
-**Best val loss:**	5.21 (epoch 2)
+**Best val loss:**	5.21 (epoch 2) for small reference run, x for full-scale run
