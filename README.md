@@ -1,5 +1,6 @@
 # cp468_assignment3
 **to import the raw SQuAD data use:** 
+
 mkdir -p data/raw
 cd data/raw
 curl -sL -o train.json https://raw.githubusercontent.com/xinyadu/nqg/master/data/raw/train.json
