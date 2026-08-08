@@ -34,7 +34,7 @@ python evaluate.py --pred ../results/lstm_predictions.jsonl --name lstm
 
 **Input representation:** Passage tokens with the answer span wrapped in < ans > ... < ans > markers, truncated to a ±25-token window around the answer
 
-**Parameters: **   6,484,560
+**Parameters:**   6,484,560
 **Hardware:**	1 CPU core, 1 GPU
 **Train / val example:s**	5,000 / 500 (subsampled from the full 75,711/10,570 with --max_train/--max_val)
 **Epochs:**	8
