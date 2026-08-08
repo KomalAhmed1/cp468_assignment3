@@ -1,0 +1,10 @@
+{
+  "max_src_len": 60,
+  "max_tgt_len": 18,
+  "context_window": 25,
+  "counts": {
+    "train": 75711,
+    "val": 10570,
+    "test": 11877
+  }
+}
