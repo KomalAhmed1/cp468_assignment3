@@ -30,13 +30,18 @@ python evaluate.py --pred ../results/lstm_predictions.jsonl --name lstm
 
 **License:** SQuAD is released under CC BY-SA 4.0. Cite: Rajpurkar et al. (2016), SQuAD: 100,000+ Questions for Machine Comprehension of Text, EMNLP 2016; and Du, Shao & Cardie (2017), Learning to Ask: Neural Question Generation for Reading Comprehension, ACL 2017 (for the split).
 
-**Counts after flattening/filtering (src/preprocess.py): **75,711 train / 10,570 val / 11,877 test question-generation examples.
+**Counts after flattening/filtering (src/preprocess.py):** 75,711 train / 10,570 val / 11,877 test question-generation examples.
 
 **Input representation:** Passage tokens with the answer span wrapped in < ans > ... < ans > markers, truncated to a ±25-token window around the answer
 
 **Parameters:**   6,484,560
+
 **Hardware:**	1 CPU core, 1 GPU
+
 **Train / val example:s**	5,000 / 500 (subsampled from the full 75,711/10,570 with --max_train/--max_val)
+
 **Epochs:**	8
+
 **Total training time:**	1,199 s (~20 min)
+
 **Best val loss:**	5.21 (epoch 2)
